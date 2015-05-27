@@ -1,0 +1,17 @@
+	{
+  "name": "NodeTemp",
+  "version": "0.0.1",
+  "description": "Medidor de temperatura Client",
+  "main": "client.js",
+  "author": {
+    "name": "Cristian Navarrete",
+    "email": "cristian.navarreteg@sansano.usm.cl"
+  },
+  "dependencies": {
+    "socket.io-client": "*",
+    "errorhandler": "*",
+    "node-dht-sensor": "0.0.7",
+    "node-gyp": "*"
+  }
+}
+         
