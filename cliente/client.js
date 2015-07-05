@@ -1,47 +1,58 @@
-var io = require('socket.io-client');
-var serverUrl = 'http://ip:3700/';
-var conn = io.connect(serverUrl);
-var sensorLib = require("node-dht-sensor");
-console.log("Starting Client")
+// Vars
 var timeout;
+var server = '';
+var timeBetweenUpdates = 60; // Time between auto updates in seconds
+var token = '';
+
+var ports = {'interior': 25, 'exterior': 23};
+// For my raspberry the ports are
+//P4 (23) -> Exterior
+//P6 (25) -> Interior
+
+
+// Requires
+var io = require('socket.io-client')(server);
+var sensorLib = require("node-dht-sensor");
+
+/// Get the data
 function getData(pos){
-	console.log("Getting Sensor Data",pos);
-	
 	var data = sensorLib.readSpec(22, pos);
 	return data
-
 }
-function update(){
-	console.log("Update Requested");
-	clearInterval(timeout);
-	var data = {
-		'interior': {
-			'token': '', // Create your token
-			'tipo': 'interior',
-			'values': {
-				'temperature': parseFloat(getData(24).temperature).toFixed(1),
-				'humidity': parseFloat(getData(24).humidity).toFixed(1),
-			}	
-		},
-		'exterior': {
-			'token': '', // Create your token
-			'tipo': 'exterior',
-			'values': {
-				'temperature': parseFloat(getData(4).temperature).toFixed(1),
-				'humidity': parseFloat(getData(4).humidity).toFixed(1),
-			}	
-		}
-	}
-	conn.emit('updateDb', data.interior, function(resp, data) {
-	    console.log('Respuesta' + resp,data);
-	});
-	conn.emit('updateDb', data.exterior, function(resp, data) {
-	    console.log('Respuesta' + resp,data);
-	});
-	timeout = setTimeout(function(){update();},60000);
-}
-update();
 
-conn.on('updateLast',function(){
-	update();
+// Handle socket request
+io.on('connect',function(){
+	console.log('Connected');
+	io.on('updateLast',update);
 })
+
+
+function update(){
+	console.log("Update Request Received");
+	clearInterval(timeout);
+	for (var key in ports){
+		request = getData(ports[key]);
+		if(request.errors == 0){
+			console.log('Lecture is valid');
+			var data = {
+				'token': token,
+				'tipo': key,
+				'values': {
+					'temperature': parseFloat(request.temperature).toFixed(1),
+					'humidity': parseFloat(request.humidity).toFixed(1),
+				}	
+			}
+			console.log(data);
+			io.emit('updateDb', data, function(resp, data) {
+			    console.log('Response ' + resp,data);
+			});
+		}
+		else{
+			console.log('The '+key+' data is invalid, not sended');
+		}
+		
+	}
+	timeout = setTimeout(function(){update();},timeBetweenUpdates * 1000);
+}
+
+console.log('Client Started');
