@@ -103,6 +103,7 @@ MongoClient.connect(mongoUrl, function(err, db) {
 		console.log(err);
 		fn(0,'Cant connect to db');
 	}
+	db.close();
 });
 
 
@@ -170,6 +171,7 @@ io.sockets.on('connection', function (socket) {
 					console.log(err)
 					fn(0,'Cant connect to db');
 				  }
+				  db.close();
 				});
 
 				// Send Data to the connected Users
