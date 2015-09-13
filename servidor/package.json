@@ -1,19 +1,22 @@
-	{
+  {
   "name": "NodeTemp",
-  "version": "0.2.0",
-  "description": "Temperature Monitor Server in NodeJS",
+  "version": "1.0.0",
+  "description": "Medidor de temperatura Server",
   "main": "server.js",
   "author": {
     "name": "Cristian Navarrete",
     "email": "cristian.navarreteg@sansano.usm.cl"
   },
-  "engine": "node 0.10.39",
   "dependencies": {
     "express": "4.12.3",
     "socket.io": "1.3.5",
     "stylus": "0.51.1",
     "mongodb": "2.0.28",
-    "forever": "0.14.1"
+    "forever": "0.14.1",
+    "moment": "2.10.6"
+
+  },
+  "engines":{
+    "node": "0.12.2"
   }
 }
-         

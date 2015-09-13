@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Raspberry Home Automation</title>
+	<!-- Mobile Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,minimal-ui" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-barstyle" content="black-translucent">
+	<link rel="apple-touch-icon" href="images/mobile.png">
+	<!-- for Chrome on Android, multi-resolution icon of 196x196 -->
+	<meta name="mobile-web-app-capable" content="yes">
+	<link rel="shortcut icon" sizes="196x196" href="images/mobile.png">
+	<meta name="apple-mobile-web-app-title" content="Temperatura Actual">
+	<meta name="application-name" content="Temperatura Actual">
+	<!-- Web Fonts  -->
+	<link href='http://fonts.googleapis.com/css?family=Oswald:400,700|Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/app.css">
+
+</head>
+<body>
+	<h1>Raspberry Home Automation</h1>
+	<div id="content">Loading...</div>
+	<div id="menu">
+		<ul>
+			<li class="active" data-action="dashboard">
+				<a href="./dashboard">
+					<i class="icon-home"></i>
+					<span>Dashboard</span>
+				</a>
+			</li>
+			<li data-action="aire">
+				<a href="monitor-air">
+					<i class="icon-sun"></i>
+					<span>Aire</span>
+				</a>
+			</li>
+			<li data-action="agua">
+				<a href="monitor-water">
+					<i class="icon-water"></i>
+					<span>Agua</span>
+				</a>
+			</li>
+			</ul>
+	</div>
+	<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1.1','packages':['line', 'corechart']}]}"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="js/app-min.js"></script>
+</body>
+</html>

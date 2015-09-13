@@ -1,0 +1,41 @@
+
+<div id="air-temperature">
+	<div class="Mediciones">
+		<h3 class="Mediciones-tipo">
+			Aire <button class="btn btn-update" data-action="update" data-type="aire"><i class="icon-refresh"></i></button>
+		</h3>
+		<div class="Mediciones-box" data-type="aire" data-title="interior">
+			<h3 class="Mediciones-title">Interior <small class="Mediciones-extremos">Max: <span data-name="max-daily">23</span>°C Min: <span data-name="min-daily">12</span>°C</small></h3>
+			<strong class="Mediciones-temperatura"><i class="icon-temperatura"></i> <span data-name="temperature">22</span> <small class="Mediciones-unidad">°C</small></strong>
+			<span class="Mediciones-humedad"><i class="icon-humedad"></i> <span data-name="humidity">50</span> <small class="Mediciones-unidad">%</small></span>
+		</div>
+		<div class="Mediciones-box" data-type="aire" data-title="exterior">
+			<h3 class="Mediciones-title">Exterior <small class="Mediciones-extremos">Max: <span data-name="max-daily">23</span>°C Min: <span data-name="min-daily">12</span>°C</small></h3>
+			<strong class="Mediciones-temperatura"><i class="icon-temperatura"></i> <span data-name="temperature">12</span> <small class="Mediciones-unidad">°C</small></strong>
+			<span class="Mediciones-humedad"><i class="icon-humedad"></i> <span data-name="humidity">90</span> <small class="Mediciones-unidad">%</small></span>
+		</div>
+	</div>
+	<div class="Graficas">
+		<h2>Gráficas</h2>
+		<div class="Graficas-box" data-name="Diaria">
+			<h3>Diaria</h3>
+			<div class="Graficas-temperatura" data-type="temperatura" id="chart_div" style="width: 48%;"></div>
+			<div class="Graficas-humedad" data-type="humedad" style="width: 48%;"></div>
+		</div>
+		<div class="Graficas-box" data-name="Semanal">
+			<h3>Semanal</h3>
+			<div class="Graficas-temperatura" data-type="temperatura" style="width: 48%;"></div>
+			<div class="Graficas-humedad" data-type="humedad" style="width: 48%;"></div>
+		</div>
+		<div class="Graficas-box" data-name="Mensual">
+			<h3>Mensual</h3>
+			<div class="Graficas-temperatura" data-type="temperatura" style="width: 48%;"></div>
+			<div class="Graficas-humedad" data-type="humedad" style="width: 48%;"></div>
+		</div>
+		<div class="Graficas-box" data-name="Anual">
+			<h3>Anual</h3>
+			<div class="Graficas-temperatura" data-type="temperatura" style="width: 48%;"></div>
+			<div class="Graficas-humedad" data-type="humedad" style="width: 48%;"></div>
+		</div>
+	</div>
+</div>

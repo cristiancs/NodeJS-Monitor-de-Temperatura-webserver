@@ -1,0 +1,43 @@
+.Mediciones
+	text-align center
+	&-temperatura
+		font-size 4em
+	&-humedad
+		font-size 2em
+		margin-left 1em
+		+below(420px)
+			display block
+			margin auto
+	&-box
+		background #3598db
+		color white
+		padding .5em 1em
+		text-align center
+		margin-bottom 1em
+		+above(760px)
+			width 46%
+			display inline-block
+	&-title
+		text-align left
+		font-weight bold
+		font-size 2em
+		margin 0
+		width 100%
+		small
+			font-size 40%
+			text-align right
+			font-weight 300
+			margin-left 1em
+	&-tipo
+		color white
+		font-size 3em
+		margin 0 0 .3em 0
+		text-align center
+	button.btn-update
+		font-size 45%
+		padding 1rem
+		cursor pointer
+		color white
+		background #2c3e50
+		&:hover
+			background #34495e
